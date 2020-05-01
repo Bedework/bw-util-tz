@@ -77,7 +77,7 @@ public class DateTimeUtil {
    * @author douglm
    *
    */
-  public static class BadDateException extends Throwable {
+  public static class BadDateException extends RuntimeException {
     /**
      *
      */

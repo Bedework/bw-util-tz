@@ -32,7 +32,7 @@
     <jackson.version>2.10.0</jackson.version>
 
     <!-- Third Party Library Versions -->
-    <junit.version>4.8.2</junit.version>
+    <junit.version>4.13.1</junit.version>
     <servlet-api.version>4.0.0</servlet-api.version>
   </properties>
 

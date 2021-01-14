@@ -170,7 +170,7 @@ public class TimezonesImpl extends Timezones {
       return timezoneNames;
     }
 
-    try (TzServer server = getTzServer(serverUrl)) {
+    try (final TzServer server = getTzServer(serverUrl)) {
       final TimezoneListType tzlist = server.getList(null);
 
       final Collection<TimeZoneName> ids = new TreeSet<>();
@@ -188,13 +188,13 @@ public class TimezonesImpl extends Timezones {
   @Override
   public TimezoneListType getList(final String changedSince) throws TimezonesException {
 
-    try (TzServer server = getTzServer(serverUrl)) {
+    try (final TzServer server = getTzServer(serverUrl)) {
       return server.getList(changedSince);
     }
   }
 
   @Override
-  public synchronized void refreshTimezones() throws TimezonesException {
+  public synchronized void refreshTimezones() {
     timezoneNames = null;
     timezones.clear();
   }
@@ -248,13 +248,13 @@ public class TimezonesImpl extends Timezones {
   }
 
   @Override
-  public void setDefaultTimeZoneId(final String id) throws TimezonesException {
+  public void setDefaultTimeZoneId(final String id) {
     defaultTimeZone = null;
     defaultTimeZoneId = id;
   }
 
   @Override
-  public String getDefaultTimeZoneId() throws TimezonesException {
+  public String getDefaultTimeZoneId() {
     return defaultTimeZoneId;
   }
 
@@ -425,10 +425,14 @@ public class TimezonesImpl extends Timezones {
                                   true);
 
       final net.fortuna.ical4j.model.Calendar cal = cb.build(ufrdr);
-      final VTimeZone vtz = (VTimeZone)cal.getComponents().getComponent(Component.VTIMEZONE);
-      if (vtz == null) {
-        throw new TimezonesException("Incorrectly stored timezone");
+      final Component comp =
+              cal.getComponents().getComponent(Component.VTIMEZONE);
+      if (!(comp instanceof VTimeZone)) {
+        error("Not getting VTimeZone returned: " + ttz.vtz);
+        throw new TimezonesException("Incorrect result");
       }
+
+      final VTimeZone vtz = (VTimeZone)comp;
 
       ttz.tz = new TimeZone(vtz);
 
@@ -507,7 +511,7 @@ public class TimezonesImpl extends Timezones {
    *                   Logged methods
    * ==================================================================== */
 
-  private BwLogger logger = new BwLogger();
+  private final BwLogger logger = new BwLogger();
 
   @Override
   public BwLogger getLogger() {

@@ -111,18 +111,16 @@ public abstract class Timezones implements Logged, Serializable {
   /** Set the default timezone id for this system.
    *
    * @param id timezone id e.g. America/New_York
-   * @throws TimezonesException on error
    */
-  public static void setSystemDefaultTzid(final String id) throws TimezonesException {
+  public static void setSystemDefaultTzid(final String id) {
     getTimezones().setDefaultTimeZoneId(id);
   }
 
   /** Get the default timezone id for this system.
    *
    * @return String id
-   * @throws TimezonesException on error
    */
-  public static String getSystemDefaultTzid() throws TimezonesException {
+  public static String getSystemDefaultTzid() {
     return getTimezones().getDefaultTimeZoneId();
   }
 
@@ -138,9 +136,8 @@ public abstract class Timezones implements Logged, Serializable {
   /** Get the default timezone id for this thread.
    *
    * @return String id
-   * @throws TimezonesException on error
    */
-  public static String getThreadDefaultTzid() throws TimezonesException {
+  public static String getThreadDefaultTzid() {
     final String id = threadTzid.get();
 
     if (id != null) {
@@ -217,9 +214,8 @@ public abstract class Timezones implements Logged, Serializable {
   /** Refresh the timezone table - presumably after a call to clearPublicTimezones.
    * and many calls to saveTimeZone.
    *
-   * @throws TimezonesException on error
    */
-  public static void refreshTzs() throws TimezonesException {
+  public static void refreshTzs() {
     getTimezones().refreshTimezones();
   }
 
@@ -307,9 +303,8 @@ public abstract class Timezones implements Logged, Serializable {
 
   /** Refresh the timezone table - usually after timezones have changed..
    *
-   * @throws TimezonesException on error
    */
-  public abstract void refreshTimezones() throws TimezonesException;
+  public abstract void refreshTimezones();
 
   /**
    * @param tzid timezone id e.g. America/New_York
@@ -320,16 +315,14 @@ public abstract class Timezones implements Logged, Serializable {
 
   /**
    * @param id timezone id e.g. America/New_York
-   * @throws TimezonesException on error
    */
-  public abstract void setDefaultTimeZoneId(String id) throws TimezonesException;
+  public abstract void setDefaultTimeZoneId(String id);
 
   /** Get the default timezone id for this system.
    *
    * @return String id
-   * @throws TimezonesException on error
    */
-  public abstract String getDefaultTimeZoneId() throws TimezonesException;
+  public abstract String getDefaultTimeZoneId();
 
   /** Get the default timezone for this system.
    *

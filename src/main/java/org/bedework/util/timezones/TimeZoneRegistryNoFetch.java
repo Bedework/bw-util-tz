@@ -18,17 +18,22 @@
 */
 package org.bedework.util.timezones;
 
+import org.bedework.util.caching.FlushMap;
+
 import net.fortuna.ical4j.model.TimeZone;
 import net.fortuna.ical4j.model.TimeZoneRegistry;
 
 /**
- * The implementation of <code>TimeZoneRegistry</code> for the bedework
- * calendar. This class uses the Timezones classes to load timezones
- * from a timezone server.
+ * An implementation of <code>TimeZoneRegistry</code> which
+ * does not fetch timezones - only caches.
  *
- * @author Mike Douglass  (based on the original by Ben Fortuna)
+ * @author Mike Douglass
  */
-public class TimeZoneRegistryImpl implements TimeZoneRegistry {
+public class TimeZoneRegistryNoFetch implements TimeZoneRegistry {
+  protected FlushMap<String, TimeZone> timezones =
+          new FlushMap<>(60 * 1000 * 60, // 1 hour
+                         100); // 100 timezones
+
   @Override
   public void register(final TimeZone timezone) {
     try {
@@ -39,8 +44,9 @@ public class TimeZoneRegistryImpl implements TimeZoneRegistry {
   }
 
   @Override
-  public void register(final TimeZone timezone, final boolean update) {
-    register(timezone);
+  public void register(final TimeZone timezone,
+                       final boolean update) {
+    timezones.put(timezone.getID(), timezone);
   }
 
   @Override
@@ -49,11 +55,7 @@ public class TimeZoneRegistryImpl implements TimeZoneRegistry {
 
   @Override
   public TimeZone getTimeZone(final String id) {
-    try {
-      return Timezones.getTz(id);
-    } catch (final Throwable t) {
-      throw new RuntimeException(t);
-    }
+    return timezones.get(id);
   }
 }
 

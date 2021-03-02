@@ -147,15 +147,12 @@ public class TimezonesImpl extends Timezones {
   public TimeZone getTimeZone(final String id) throws TimezonesException {
     //id = unalias(id);
 
-    TimeZone tz = timezones.get(id);
+    final TimeZone tz = timezones.get(id);
     if (tz != null) {
       return tz;
     }
 
-    tz = fetchTimeZone(id);
-    register(id, tz);
-
-    return tz;
+    return fetchTimeZone(id);
   }
 
   @Override

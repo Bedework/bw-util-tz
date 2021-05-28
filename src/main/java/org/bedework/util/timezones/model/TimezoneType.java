@@ -194,7 +194,7 @@ public class TimezoneType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("tzid", getTzid());
     ts.append("etag", getEtag());

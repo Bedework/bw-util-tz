@@ -68,7 +68,7 @@ public class TzServer implements Logged, AutoCloseable {
       return null;
     }
 
-    try (CloseableHttpResponse hresp =
+    try (final CloseableHttpResponse hresp =
       doCall("zones/" + id.replace("/", "%2F"),
              etag,
              null)) {
@@ -114,7 +114,7 @@ public class TzServer implements Logged, AutoCloseable {
 
     final NameValuePair[] parsArray = pars.toArray(new NameValuePair[0]);
 
-    try (CloseableHttpResponse hresp =
+    try (final CloseableHttpResponse hresp =
                  doCall("zones",
                         null,
                         parsArray)) {
@@ -137,7 +137,7 @@ public class TzServer implements Logged, AutoCloseable {
    * @throws TimezonesException on error
    */
   public Properties getAliases() throws TimezonesException {
-    try (CloseableHttpResponse hresp =
+    try (final CloseableHttpResponse hresp =
                  doCall("aliases",
                         null,
                         null)) {
@@ -211,7 +211,7 @@ public class TzServer implements Logged, AutoCloseable {
     }
 
     for (int redirects = 0; redirects < 10; redirects++) {
-      try (CloseableHttpResponse hresp =
+      try (final CloseableHttpResponse hresp =
                    doCall(realUrl,
                           "capabilities",
                           null,

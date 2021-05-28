@@ -15,22 +15,17 @@
     <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
     <!-- Bedework Versions -->
-    <bw-util.version>4.0.27</bw-util.version>
+    <bw-util.version>4.0.28</bw-util.version>
     <bw-util-logging.version>4.0.5</bw-util-logging.version>
-    <bw-util-network.version>4.1.0</bw-util-network.version>
+    <bw-util-network.version>4.1.1</bw-util-network.version>
     <bw-xml.version>4.0.10</bw-xml.version>
-    <bw-util-deploy.version>4.0.28-SNAPSHOT</bw-util-deploy.version>
 
     <ical4j.groupId>org.bedework.ical4j</ical4j.groupId>
     <ical4j.artifactId>ical4j</ical4j.artifactId>
-    <ical4j.version>3.0.13-SNAPSHOT</ical4j.version>
-    <!--
-    <ical4j.groupId>org.bedework.ical4j</ical4j.groupId>
-    <ical4j.artifactId>ical4j</ical4j.artifactId>
-    <ical4j.version>1.1.4</ical4j.version>
-    -->
+    <ical4j.version>3.0.13</ical4j.version>
+
     <ical4j-vcard.version>1.0.4</ical4j-vcard.version>
-    <jackson.version>2.10.0</jackson.version>
+    <jackson.version>2.11.0</jackson.version>
 
     <!-- Third Party Library Versions -->
     <junit.version>4.13.1</junit.version>
@@ -66,9 +61,9 @@
     <developer>
       <name>Mike Douglass</name>
       <organization>
-        Spherical Cow Group
+        Bedework Commercial Services
       </organization>
-      <organizationUrl>http://sphericalcowgroup.com/</organizationUrl>
+      <organizationUrl>https://bedework.com/</organizationUrl>
     </developer>
     <developer>
       <name>Arlen Johnson</name>
@@ -242,72 +237,6 @@
         <artifactId>versions-maven-plugin</artifactId>
         <version>2.3</version>
         <configuration>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.bedework</groupId>
-        <artifactId>bw-util-maven-deploy-wfmodule</artifactId>
-        <version>${bw-util-deploy.version}</version>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <goals>
-              <goal>bw-deploy-wfmodule</goal>
-            </goals>
-          </execution>
-        </executions>
-
-        <configuration>
-          <moduleName>org.bedework.util.tz</moduleName>
-
-          <jarDependencies>
-            <jarDependency>
-              <moduleName>org.bedework.com.fasterxml.jackson.core.annotations</moduleName>
-              <groupId>com.fasterxml.jackson.core</groupId>
-              <artifactId>jackson-annotations</artifactId>
-              <version>${jackson.version}</version>
-              <type>jar</type>
-            </jarDependency>
-
-            <jarDependency>
-              <moduleName>org.bedework.com.fasterxml.jackson.core.databind</moduleName>
-              <groupId>com.fasterxml.jackson.core</groupId>
-              <artifactId>jackson-databind</artifactId>
-              <version>${jackson.version}</version>
-              <type>jar</type>
-              <moduleDependencies>
-                <moduleDependency>
-                  <name>com.fasterxml.jackson.core.jackson-core</name>
-                </moduleDependency>
-                <moduleDependency>
-                  <name>org.bedework.com.fasterxml.jackson.core.annotations</name>
-                </moduleDependency>
-              </moduleDependencies>
-            </jarDependency>
-          </jarDependencies>
-
-          <moduleDependencies>
-            <moduleDependency>
-              <name>org.bedework.logging</name>
-              <!-- includes
-                   org.bedework.com.fasterxml.jackson.core.annotations -->
-            </moduleDependency>
-            <moduleDependency>
-              <name>org.bedework.util.caching</name>
-            </moduleDependency>
-            <moduleDependency>
-              <name>org.bedework.util.misc</name>
-            </moduleDependency>
-            <moduleDependency>
-              <name>org.bedework.util.http</name>
-            </moduleDependency>
-
-            <!-- ============== generated elsewhere ========== -->
-            <moduleDependency>
-              <name>org.bedework.ical4j</name>
-            </moduleDependency>
-          </moduleDependencies>
         </configuration>
       </plugin>
     </plugins>

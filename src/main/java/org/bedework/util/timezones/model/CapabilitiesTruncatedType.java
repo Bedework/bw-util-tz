@@ -131,7 +131,7 @@ public class CapabilitiesTruncatedType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("any", getAny());
     ts.append("years", getYears(), false);

@@ -85,7 +85,7 @@ public class TimezonesAliasInfoType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("dtstamp", getDtstamp());
     ts.append("timezoneAliasInfo", getTimezoneAliasInfo(), true);

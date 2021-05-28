@@ -138,7 +138,7 @@ public class LocalNameType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("value", getValue());
     ts.append("lang", getLang());

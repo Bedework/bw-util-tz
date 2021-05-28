@@ -151,7 +151,7 @@ public class CapabilitiesAcceptParameterType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("name", getName());
     ts.append("required", isRequired());

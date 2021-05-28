@@ -100,7 +100,7 @@ public class DateTimeUtil {
    * @return Date value for yesterday.
    */
   public static Date yesterday() {
-    Calendar cal = Calendar.getInstance();
+    final Calendar cal = Calendar.getInstance();
     cal.add(Calendar.DATE, -1);
 
     return cal.getTime();
@@ -115,7 +115,7 @@ public class DateTimeUtil {
     synchronized (isoDateFormat) {
       try {
         isoDateFormat.setTimeZone(Timezones.getDefaultTz());
-      } catch (TimezonesException tze) {
+      } catch (final TimezonesException tze) {
         throw new RuntimeException(tze);
       }
       return isoDateFormat.format(val);
@@ -139,7 +139,7 @@ public class DateTimeUtil {
     synchronized (rfcDateFormat) {
       try {
         rfcDateFormat.setTimeZone(Timezones.getDefaultTz());
-      } catch (TimezonesException tze) {
+      } catch (final TimezonesException tze) {
         throw new RuntimeException(tze);
       }
       return rfcDateFormat.format(val);
@@ -164,7 +164,7 @@ public class DateTimeUtil {
     synchronized (isoDateTimeFormat) {
       try {
         isoDateTimeFormat.setTimeZone(Timezones.getDefaultTz());
-      } catch (TimezonesException tze) {
+      } catch (final TimezonesException tze) {
         throw new RuntimeException(tze);
       }
       return isoDateTimeFormat.format(val);
@@ -201,7 +201,7 @@ public class DateTimeUtil {
     synchronized (rfcDateTimeFormat) {
       try {
         rfcDateTimeFormat.setTimeZone(Timezones.getDefaultTz());
-      } catch (TimezonesException tze) {
+      } catch (final TimezonesException tze) {
         throw new RuntimeException(tze);
       }
       return rfcDateTimeFormat.format(val);
@@ -274,12 +274,12 @@ public class DateTimeUtil {
       synchronized (isoDateFormat) {
         try {
           isoDateFormat.setTimeZone(Timezones.getDefaultTz());
-        } catch (TimezonesException tze) {
+        } catch (final TimezonesException tze) {
           throw new RuntimeException(tze);
         }
         return isoDateFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -295,12 +295,12 @@ public class DateTimeUtil {
       synchronized (rfcDateFormat) {
         try {
           rfcDateFormat.setTimeZone(Timezones.getDefaultTz());
-        } catch (TimezonesException tze) {
+        } catch (final TimezonesException tze) {
           throw new RuntimeException(tze);
         }
         return rfcDateFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -316,12 +316,12 @@ public class DateTimeUtil {
       synchronized (isoDateTimeFormat) {
         try {
           isoDateTimeFormat.setTimeZone(Timezones.getDefaultTz());
-        } catch (TimezonesException tze) {
+        } catch (final TimezonesException tze) {
           throw new RuntimeException(tze);
         }
         return isoDateTimeFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -336,9 +336,9 @@ public class DateTimeUtil {
   public static Date fromRfcDateTime(final String val) throws BadDateException {
     try {
       return fromRfcDateTime(val, Timezones.getDefaultTz());
-    } catch (BadDateException bde) {
+    } catch (final BadDateException bde) {
       throw bde;
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -357,7 +357,7 @@ public class DateTimeUtil {
         rfcDateTimeTZFormat.setTimeZone(tz);
         return rfcDateTimeTZFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -376,7 +376,7 @@ public class DateTimeUtil {
         isoDateTimeTZFormat.setTimeZone(tz);
         return isoDateTimeTZFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -396,7 +396,7 @@ public class DateTimeUtil {
         isoDateTimeUTCTZFormat.setTimeZone(tz);
         return isoDateTimeUTCTZFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -412,7 +412,7 @@ public class DateTimeUtil {
       synchronized (isoDateTimeUTCFormat) {
         return isoDateTimeUTCFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -428,7 +428,7 @@ public class DateTimeUtil {
       synchronized (rfcDateTimeUTCFormat) {
         return rfcDateTimeUTCFormat.parse(val);
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -444,7 +444,7 @@ public class DateTimeUtil {
       synchronized (isoDateTimeUTCFormat) {
         return rfc822Date(isoDateTimeUTCFormat.parse(val));
       }
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -462,7 +462,7 @@ public class DateTimeUtil {
       }
       fromISODate(val);
       return true;
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       return false;
     }
   }
@@ -480,7 +480,7 @@ public class DateTimeUtil {
       }
       fromISODateTimeUTC(val);
       return true;
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       return false;
     }
   }
@@ -498,7 +498,7 @@ public class DateTimeUtil {
       }
       fromISODateTime(val);
       return true;
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       return false;
     }
   }
@@ -524,7 +524,7 @@ public class DateTimeUtil {
       }
 
       return fromRfcDate(dt);
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }
@@ -546,7 +546,7 @@ public class DateTimeUtil {
       }
 
       return fromRfcDateTimeUTC(dt);
-    } catch (Throwable t) {
+    } catch (final Throwable t) {
       throw new BadDateException();
     }
   }

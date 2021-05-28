@@ -98,7 +98,7 @@ public class ErrorResponseType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("error", getError());
     ts.append("description", getDescription());

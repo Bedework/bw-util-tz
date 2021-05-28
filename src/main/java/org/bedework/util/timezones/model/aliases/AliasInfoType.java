@@ -135,7 +135,7 @@ public class AliasInfoType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("alias", getAlias());
     ts.append("lastModified", getLastModified());

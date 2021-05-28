@@ -59,7 +59,7 @@ public abstract class Timezones implements Logged, Serializable {
     public TimeZone getTimeZone(final String id) {
       try {
         return Timezones.getTimezones().getTimeZone(id);
-      } catch (Throwable t) {
+      } catch (final Throwable t) {
         throw new RuntimeException(t);
       }
     }
@@ -127,9 +127,8 @@ public abstract class Timezones implements Logged, Serializable {
   /** Set the default timezone id for this thread.
    *
    * @param id timezone id e.g. America/New_York
-   * @throws TimezonesException on error
    */
-  public static void setThreadDefaultTzid(final String id) throws TimezonesException {
+  public static void setThreadDefaultTzid(final String id) {
     threadTzid.set(id);
   }
 
@@ -194,10 +193,8 @@ public abstract class Timezones implements Logged, Serializable {
    *
    * @param id timezone id e.g. America/New_York
    * @param timezone object
-   * @throws TimezonesException on error
    */
-  public static void registerTz(final String id, final TimeZone timezone)
-          throws TimezonesException {
+  public static void registerTz(final String id, final TimeZone timezone) {
     /* We don't allow ical to change our timezones. */
     //getTimezones().registerTimeZone(id, timezone);
   }

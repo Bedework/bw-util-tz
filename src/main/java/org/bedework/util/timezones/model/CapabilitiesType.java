@@ -125,7 +125,7 @@ public class CapabilitiesType extends BaseResultType {
 
   @Override
   public String toString() {
-    ToString ts = new ToString(this);
+    final ToString ts = new ToString(this);
 
     ts.append("version", getVersion());
     ts.append("info", getInfo());

@@ -139,7 +139,7 @@ public class TimezonesImpl extends Timezones {
   }
 
   @Override
-  public void init(final String serverUrl) throws TimezonesException {
+  public void init(final String serverUrl) {
     this.serverUrl = serverUrl;
   }
 
@@ -441,8 +441,7 @@ public class TimezonesImpl extends Timezones {
 
   @Override
   public synchronized void register(final String id,
-                                    final TimeZone timezone)
-          throws TimezonesException {
+                                    final TimeZone timezone) {
     timezones.put(id, timezone);
   }
 

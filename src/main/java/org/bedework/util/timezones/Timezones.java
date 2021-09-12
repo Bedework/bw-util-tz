@@ -90,8 +90,6 @@ public abstract class Timezones implements Logged, Serializable {
       }
 
       tzs.init(serverUrl);
-    } catch (final TimezonesException te) {
-      throw te;
     } catch (final Throwable t) {
       throw new TimezonesException(t);
     }
@@ -223,9 +221,8 @@ public abstract class Timezones implements Logged, Serializable {
   /** Initialise the object supplying the url of the timezones server.
    *
    * @param serverUrl the url
-   * @throws TimezonesException on error
    */
-  public abstract void init(String serverUrl) throws TimezonesException;
+  public abstract void init(String serverUrl);
 
   /** Get a timezone object given the id. This method will attempt to retrieve
    * a cached timezone and if that fails a will try to fetch the tz from the
@@ -332,11 +329,9 @@ public abstract class Timezones implements Logged, Serializable {
    *
    * @param id timezone id e.g. America/New_York
    * @param timezone the timezone object
-   * @throws TimezonesException on error
    */
   public abstract void register(String id,
-                                TimeZone timezone)
-           throws TimezonesException;
+                                TimeZone timezone);
 
   /** Given a String time value and a possibly null tzid
    *  will return a UTC formatted value. The supplied time should be of the

@@ -13,6 +13,13 @@
   <description>Timezone utility classes</description>
   <url>https://github.com/Bedework/bw-util-tz</url>
 
+  <scm>
+    <connection>scm:git:git@github.com:Bedework/bw-util-tz.git</connection>
+    <developerConnection>scm:git:git@github.com:Bedework/bw-util-tz.git</developerConnection>
+    <url>https://github.com/Bedework/bw-util-tz</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <!-- Bedework: Web Services -->
 

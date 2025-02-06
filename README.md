@@ -59,3 +59,7 @@ For full details, see [Sonatype's documentation for using Maven to publish relea
 #### 5.0.1
 * Update library versions
 
+#### 5.0.2
+* Update library versions
+* Move response classes and ToString into bw-base module.
+* Pre-jakarta release

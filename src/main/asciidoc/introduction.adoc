@@ -1,0 +1,4 @@
+[[timezones]]
+== Timezone classes
+Provides timezone related classes defining registries for ical4j
+and types used for interactions with timezone servers.

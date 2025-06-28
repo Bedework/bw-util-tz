@@ -1,5 +1,5 @@
-= Bedework Security modules.
-:title: Bedework Security modules.
+= Bedework Timezone modules.
+:title: Bedework Timezone modules.
 :safe-mode-unsafe:
 :docinfo: shared
 :docinfodir: ./docinfo
